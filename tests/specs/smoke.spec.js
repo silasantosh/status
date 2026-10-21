@@ -9,6 +9,7 @@ test.describe('smoke: main pages at 390x844', () => {
     const failures = [];
     for (const path of site.pages) {
       const { pageErrors, consoleErrors } = watchErrors(page);
+      await page.waitForTimeout(1200);
       const resp = await page.goto(path, { waitUntil: 'domcontentloaded' }).catch((e) => null);
       if (!resp) { failures.push(`${path}: navigation failed`); continue; }
       if (resp.status() >= 400) failures.push(`${path}: HTTP ${resp.status()}`);
