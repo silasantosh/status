@@ -8,7 +8,7 @@ module.exports = defineConfig({
   timeout: 45000,
   expect: { timeout: 15000 },
   retries: process.env.CI ? 1 : 0,
-  workers: 2,
+  workers: 1,
   reporter: [['html', { open: 'never' }], ['json', { outputFile: 'results/results.json' }], ['list']],
   use: {
     viewport: { width: 390, height: 844 },

@@ -12,7 +12,7 @@ module.exports = {
     name: 'in-learn',
     base: 'https://in-learn.in',
     pages: ['/', '/tracker/', '/guides/', '/daily-jobs/'],
-    accountPath: '/account/',
+    accountPath: '/tracker/',
   },
   inmeet: {
     name: 'in-meet',
