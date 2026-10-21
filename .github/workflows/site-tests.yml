@@ -119,10 +119,10 @@ jobs:
         run: |
           set -e
           mkdir -p results
-          curl -sSfLo osv-scanner https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_linux_amd64
+          curl -sSfLO https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_linux_amd64
           curl -sSfLO https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_SHA256SUMS
           grep "linux_amd64$" osv-scanner_SHA256SUMS | sha256sum -c -
-          chmod +x osv-scanner
+          mv osv-scanner_linux_amd64 osv-scanner && chmod +x osv-scanner
           ./osv-scanner scan source --lockfile=tests/package-lock.json --format json --output-file results/osv.json --verbosity error || true
           COUNT=$(jq '[.results[].packages[]? | select(.vulnerabilities != null and (.vulnerabilities | length > 0))] | length' results/osv.json 2>/dev/null || echo 0)
           echo "OSV vulnerable dev-deps: **${COUNT}** (advisory; test toolchain only)" >> "$GITHUB_STEP_SUMMARY"
