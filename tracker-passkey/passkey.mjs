@@ -101,7 +101,7 @@ export default {
     if (req.method === 'GET' && path === '/tracker/handoff') {
       const token = (u.searchParams.get('token') || u.searchParams.get('t') || '').trim();
       const ok = token && (await getRec(env, 'enroll:' + token)) === 'yes';
-      if (!ok) return Response.redirect(ORIGIN + '/tracker/?link=used', 303);
+      if (!ok || (await ownerCred(env))) return Response.redirect(ORIGIN + '/tracker/?link=used', 303);
       return new Response(null, { status: 303, headers: { Location: ORIGIN + '/tracker/', 'Set-Cookie': setCookie('pk_enroll', token, ENROLL_COOKIE_TTL) } });
     }
 
