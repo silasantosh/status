@@ -1,0 +1,18 @@
+{
+  "name": "site-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Per-site end-to-end test runner (390x844 mobile) for IC, in-learn, in-meet, in-media. Read-only: no real submits, no emails, no writes.",
+  "scripts": {
+    "test": "playwright test",
+    "test:site": "playwright test --project",
+    "links": "node run-links.js",
+    "lhci": "lhci autorun"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@lhci/cli": "0.15.1",
+    "@playwright/test": "1.64.1",
+    "linkinator": "8.1.0"
+  }
+}
