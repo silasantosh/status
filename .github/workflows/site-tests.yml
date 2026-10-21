@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       sites:
-        description: 'Comma list: ic,inlearn,inmeet,inmedia (or all)'
+        description: 'Comma list: ic,inlearn,inmeet (or all)'
         default: 'all'
 permissions:
   contents: read
@@ -20,7 +20,7 @@ jobs:
       - id: pick
         run: |
           S="${{ github.event.inputs.sites || 'all' }}"
-          if [ "$S" = "all" ] || [ -z "$S" ]; then S="ic,inlearn,inmeet,inmedia"; fi
+          if [ "$S" = "all" ] || [ -z "$S" ]; then S="ic,inlearn,inmeet"; fi
           JSON=$(printf '%s' "$S" | jq -cR 'split(",")')
           echo "sites=$JSON" >> "$GITHUB_OUTPUT"
 
