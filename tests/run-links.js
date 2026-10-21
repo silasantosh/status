@@ -18,7 +18,9 @@ const fs = require('fs');
       retry: true,
       linksToSkip: [/^mailto:/, /^tel:/, /upptime/i, /github\.com\/silasantosh/i],
     });
-    const broken = result.links.filter((l) => l.state === 'BROKEN');
+    const broken = result.links.filter((l) => l.state === 'BROKEN' && l.status !== 429);
+    const limited = result.links.filter((l) => l.state === 'BROKEN' && l.status === 429);
+    if (limited.length) console.log(`  rate-limited (protection, not counted): ${limited.length}`);
     brokenTotal += broken.length;
     fs.writeFileSync(`results/links/${key}.json`, JSON.stringify(result.links, null, 1));
     console.log(`[${key}] links: ${result.links.length}, broken: ${broken.length}`);
