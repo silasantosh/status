@@ -21,7 +21,7 @@ jobs:
         run: |
           S="${{ github.event.inputs.sites || 'all' }}"
           if [ "$S" = "all" ] || [ -z "$S" ]; then S="ic,inlearn,inmeet,inmedia"; fi
-          JSON=$(printf '%s' "$S" | jq -R 'split(",")')
+          JSON=$(printf '%s' "$S" | jq -cR 'split(",")')
           echo "sites=$JSON" >> "$GITHUB_OUTPUT"
 
   test:
