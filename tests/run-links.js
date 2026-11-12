@@ -16,7 +16,8 @@ const fs = require('fs');
       recurse: false,
       timeout: 15000,
       retry: true,
-      linksToSkip: [/^mailto:/, /^tel:/, /upptime/i, /github\.com\/silasantosh/i, /\/cdn-cgi\//],
+      // data.gov.in is Akamai geo/bot-blocked from CI/cloud IPs (503 / connection fail) but works for Indian users
+      linksToSkip: [/^mailto:/, /^tel:/, /upptime/i, /github\.com\/silasantosh/i, /\/cdn-cgi\//, /data\.gov\.in/i],
     });
     const broken = result.links.filter((l) => l.state === 'BROKEN' && l.status !== 429);
     const limited = result.links.filter((l) => l.state === 'BROKEN' && l.status === 429);
