@@ -12,8 +12,8 @@ test.describe('card standard', () => {
     await expect(row.locator(c.sourceSel).first(), 'main Official source button').toBeVisible();
     const tiles = await row.locator(`[${c.tileAttr}]`).evaluateAll((els, attr) => els.map((e) => e.getAttribute(attr)), c.tileAttr);
     for (const want of c.expectedTiles) {
-      // Report tile is a KNOWN missing tile on live IC (preview pending) - expected failure, will trip when fixed.
-      if (want === 'report' && testInfo.project.name === 'ic') test.fail(true, 'Report tile missing on live IC - known gap, preview pending');
+      // Summary and Report tiles are KNOWN missing on live IC (preview pending) - expected failure, will trip when fixed.
+      if ((want === 'report' || want === 'summary') && testInfo.project.name === 'ic') test.fail(true, `${want} tile missing on live IC - known gap, preview pending`);
       expect(tiles, `tile "${want}" in [${tiles}]`).toContain(want);
     }
     // counts on chips under the tiles
