@@ -12,7 +12,7 @@ module.exports = {
     name: 'in-learn',
     base: 'https://in-learn.in',
     pages: ['/', '/tracker/', '/guides/', '/daily-jobs/'],
-    accountPath: '/tracker/',
+    accountPath: null, // in-learn has no accounts by design ("No account or automatic sync")
   },
   inmeet: {
     name: 'in-meet',
