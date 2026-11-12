@@ -29,7 +29,8 @@ test.describe('forms (read-only, never submits real data)', () => {
         const ni = await inputs.count();
         for (let j = 0; j < Math.min(ni, 3); j++) {
           const inp = inputs.nth(j);
-          if (await inp.isEditable().catch(() => false)) await inp.fill('test-value-390');
+          // hidden inputs (e.g. geo 'state' fields) are editable but not fillable - skip them
+          if (await inp.isVisible().catch(() => false) && await inp.isEditable().catch(() => false)) await inp.fill('test-value-390');
         }
         const submit = f.locator('button[type="submit"], input[type="submit"]').first();
         if (await submit.isVisible().catch(() => false)) {
@@ -53,3 +54,4 @@ test.describe('forms (read-only, never submits real data)', () => {
     await expect(page.locator('body')).toBeVisible();
   });
 });
+
