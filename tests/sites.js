@@ -19,7 +19,7 @@ module.exports = {
     base: 'https://in-meet.in',
     apiHealth: 'https://api.in-meet.in/api/health',
     pages: ['/'],
-    accountPath: '/account/',
+    accountPath: null, // in-meet is local-first: no server accounts; /account/ is the app shell, only a hidden data-transfer passcode field (#transferPass), no sign-in control
   },
   inmedia: {
     name: 'in-media',
