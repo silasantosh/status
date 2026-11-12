@@ -12,11 +12,15 @@ sites:
     url: https://api.in-meet.in/api/health
   - name: in-media
     url: https://in-media.in
+  - name: in-self
+    url: https://in-self.in
+  - name: in-feeds
+    url: https://in-feeds.in
 
 status-website:
   baseUrl: /status
   name: Impact Connect status
-  introTitle: "Live status of Impact Connect, in-meet and in-media"
+  introTitle: "Live status of Impact Connect, in-meet, in-media, in-self and in-feeds"
   introMessage: Checked every 5 minutes from public servers. Past incidents are listed below.
   navbar:
     - title: Status
