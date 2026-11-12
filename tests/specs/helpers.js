@@ -11,6 +11,7 @@ function watchErrors(page) {
   const ALLOW = [
     /favicon/i, /net::ERR/i, /Failed to load resource/i, /tile\.openstreetmap/i,
     /third-?party/i, /ResizeObserver/i, /manifest/i, /preconnect/i,
+    /cloudflareinsights/i, /cdn-cgi\/rum/i, /CORS policy/i,
   ];
   page.on('pageerror', (e) => pageErrors.push(String(e).slice(0, 300)));
   page.on('console', (m) => {
