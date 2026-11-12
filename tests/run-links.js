@@ -16,7 +16,8 @@ const fs = require('fs');
       recurse: false,
       timeout: 15000,
       retry: true,
-      // data.gov.in is Akamai geo/bot-blocked from CI/cloud IPs (503 / connection fail) but works for Indian users
+      // data.gov.in returned 503/connection failures from CI and a cloud browser.
+      // Availability from India is UNVERIFIED. Skipped links are not evidence that those links work.
       linksToSkip: [/^mailto:/, /^tel:/, /upptime/i, /github\.com\/silasantosh/i, /\/cdn-cgi\//, /data\.gov\.in/i],
     });
     const broken = result.links.filter((l) => l.state === 'BROKEN' && l.status !== 429);
