@@ -9,7 +9,12 @@ test.describe('accessibility (axe-core)', () => {
     const critical = [];
     fs.mkdirSync('results/axe', { recursive: true });
     for (const path of site.pages) {
-      await page.goto(path, { waitUntil: 'domcontentloaded' });
+      const resp = await page.goto(path, { waitUntil: 'domcontentloaded' });
+      // CI egress IPs can get a 403 protection page (which itself trips axe rules); skip those.
+      if (resp && (resp.status() === 403 || resp.status() === 429)) {
+        console.warn(`blocked by site protection from CI IPs (expected): ${path} (${resp.status()})`);
+        continue;
+      }
       await page.waitForTimeout(1500);
       const res = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
       const slug = `${testInfo.project.name}${path.replace(/\//g, '_') || '_home'}`;
