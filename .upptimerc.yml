@@ -16,6 +16,14 @@ sites:
     url: https://in-self.in
   - name: in-feeds
     url: https://in-feeds.in
+  - name: in-learn
+    url: https://in-learn.in
+  - name: in-collab
+    url: https://in-collab.in
+  - name: ATG Foundation
+    url: https://atgfoundation.org
+  - name: ATG HealthCare
+    url: https://atghealthcare.in
 
 status-website:
   baseUrl: /status
