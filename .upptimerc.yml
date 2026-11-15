@@ -24,11 +24,15 @@ sites:
     url: https://atgfoundation.org
   - name: ATG HealthCare
     url: https://atghealthcare.in
+  - name: ATG HealthCare tracker
+    url: https://tracker.atghealthcare.in
+  - name: ATG Foundation tracker
+    url: https://tracker.atgfoundation.org
 
 status-website:
   baseUrl: /status
   name: Impact Connect status
-  introTitle: "Live status of Impact Connect, in-meet, in-media, in-self and in-feeds"
+  introTitle: "Live status of Impact Connect, in-meet, in-media, in-self, in-feeds, in-learn, in-collab and the ATG sites"
   introMessage: Checked every 5 minutes from public servers. Past incidents are listed below.
   navbar:
     - title: Status
